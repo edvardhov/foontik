@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Recursive';
+  src: url('./assets/fonts/Recursive-Variable.woff2') format('woff2-variations');
+  font-weight: 300 1000;
+  font-style: oblique -15deg 0deg;
+  font-display: swap;
+}
+
+@theme {
+  --color-foontik-bg: #0a0a0c;
+  --color-foontik-surface: rgba(18, 18, 22, 0.72);
+  --color-foontik-border: rgba(255, 255, 255, 0.08);
+  --color-foontik-accent: #e8ff47;
+  --color-foontik-muted: rgba(255, 255, 255, 0.45);
+  --color-foontik-text: rgba(255, 255, 255, 0.92);
+  --font-display: 'Recursive', ui-monospace, monospace;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: var(--font-display);
+    background: var(--color-foontik-bg);
+    color: var(--color-foontik-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .foontik-stage-text h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: oblique;
+    font-weight: var(--fnt-wght, 650);
+    color: var(--color-foontik-text);
+    font-variation-settings:
+      'MONO' var(--fnt-MONO, 0),
+      'CASL' var(--fnt-CASL, 0.3),
+      'wght' var(--fnt-wght, 650),
+      'slnt' var(--fnt-slnt, 0),
+      'CRSV' var(--fnt-CRSV, 0.5);
+    transform: translate(var(--fnt-vibrate-x, 0px), var(--fnt-vibrate-y, 0px))
+      scale(var(--fnt-scale, 1));
+    will-change: transform, font-variation-settings;
+    transition: none;
+  }
+
+  .foontik-stage-text h1.is-empty::before {
+    content: attr(data-placeholder);
+    color: rgba(255, 255, 255, 0.22);
+    pointer-events: none;
+  }
+
+  .foontik-stage-text h1.coach-pulse {
+    animation: coach-text-pulse 1.6s ease-in-out infinite;
+  }
+
+  .coach-pulse {
+    animation: coach-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes coach-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(232, 255, 71, 0);
+    }
+    50% {
+      box-shadow: 0 0 0 6px rgba(232, 255, 71, 0.18);
+    }
+  }
+
+  @keyframes coach-text-pulse {
+    0%,
+    100% {
+      text-shadow: 0 0 0 rgba(232, 255, 71, 0);
+    }
+    50% {
+      text-shadow: 0 0 24px rgba(232, 255, 71, 0.35);
+    }
+  }
+}

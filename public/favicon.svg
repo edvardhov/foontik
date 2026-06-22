@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="10" fill="#0a0a0c"/>
+  <text x="8" y="34" font-family="'Recursive', ui-monospace, monospace" font-size="28" font-weight="600" letter-spacing="1">
+    <tspan fill="rgba(255,255,255,0.92)">f</tspan><tspan fill="#e8ff47">i</tspan>
+  </text>
+</svg>
