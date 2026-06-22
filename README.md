@@ -27,14 +27,14 @@ Foontik turns a single word into living, kinetic typography. It maps real-time i
 
 ## Tech stack
 
-| Concern | Choice |
-| --- | --- |
-| Framework | React 19 |
-| Language | TypeScript |
-| Build | Vite |
-| Styling | Tailwind CSS v4 |
-| Animation | Motion |
-| Type | Recursive (variable font) |
+| Concern   | Choice                    |
+| --------- | ------------------------- |
+| Framework | React 19                  |
+| Language  | TypeScript                |
+| Build     | Vite                      |
+| Styling   | Tailwind CSS v4           |
+| Animation | Motion                    |
+| Type      | Recursive (variable font) |
 
 ## Getting started
 
@@ -51,12 +51,12 @@ The dev server prints a local URL (default `http://localhost:5173`).
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the Vite dev server with HMR. |
-| `npm run build` | Type-check and produce a production build in `dist/`. |
-| `npm run preview` | Serve the production build locally. |
-| `npm run lint` | Run ESLint over the project. |
+| Command           | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `npm run dev`     | Start the Vite dev server with HMR.                   |
+| `npm run build`   | Type-check and produce a production build in `dist/`. |
+| `npm run preview` | Serve the production build locally.                   |
+| `npm run lint`    | Run ESLint over the project.                          |
 
 ## Project structure
 
@@ -69,15 +69,3 @@ src/
   components/  Stage, dashboard controls, onboarding, logo
   export/      Poster snapshot
 ```
-
-## Deployment
-
-Pushes to `main` are built and deployed to **GitHub Pages** by the workflow in
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). To enable it,
-set **Settings → Pages → Source** to **GitHub Actions** once. The production
-build uses a `/foontik/` base path (see `vite.config.ts`); change it if you host
-under a different path.
-
-## License
-
-[MIT](LICENSE) © Edvard Hovhannisyan
