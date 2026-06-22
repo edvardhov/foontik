@@ -1,6 +1,9 @@
 <div align="center">
 
-# Foontik
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/foontik-dark.svg" />
+  <img alt="Foontik" src="src/assets/foontik-light.svg" width="300" />
+</picture>
 
 **Kinetic type-art studio.** Type a word, shape it with your cursor and voice, and snap it as a poster.
 
