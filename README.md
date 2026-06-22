@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Foontik
 
-Currently, two official plugins are available:
+**Kinetic type-art studio.** Type a word, shape it with your cursor and voice, and snap it as a poster.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Live demo](https://edvardhov.github.io/foontik/) · [Report a bug](https://github.com/edvardhov/foontik/issues)
 
-## React Compiler
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+Foontik turns a single word into living, kinetic typography. It maps real-time input — pointer position and microphone level — onto the variable-font axes of [Recursive](https://www.recursive.design/), so the letterforms breathe, lean, and morph as you move. When you land on a look you like, export it as a high-resolution poster.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Variable-font engine** — drives `wght`, `slnt`, `CASL` (casual), `MONO`, `CRSV` (cursive), and `scale` axes in real time.
+- **Multi-input mapping** — bind any axis to `mouseX`, `mouseY`, microphone level, or a fixed value, each with its own range and sensitivity.
+- **Live audio reactivity** — opt-in mic input so type pulses with sound.
+- **Presets** — curated starter looks plus save/load of your own, persisted to `localStorage`.
+- **Guided onboarding** — first-run walkthrough and an interactive demo.
+- **Poster export** — snapshot the stage to an image.
+- **Zero backend** — fully client-side; state lives in the browser.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Concern | Choice |
+| --- | --- |
+| Framework | React 19 |
+| Language | TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS v4 |
+| Animation | Motion |
+| Type | Recursive (variable font) |
+
+## Getting started
+
+Requires Node.js 20+.
+
+```bash
+git clone https://github.com/edvardhov/foontik.git
+cd foontik
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The dev server prints a local URL (default `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite dev server with HMR. |
+| `npm run build` | Type-check and produce a production build in `dist/`. |
+| `npm run preview` | Serve the production build locally. |
+| `npm run lint` | Run ESLint over the project. |
+
+## Project structure
+
 ```
+src/
+  engine/      Variable-font axis definitions, mapping, and the render engine
+  inputs/      Pointer and microphone input hooks
+  hooks/       Engine wiring and localStorage persistence
+  state/       Config model and presets
+  components/  Stage, dashboard controls, onboarding, logo
+  export/      Poster snapshot
+```
+
+## Deployment
+
+Pushes to `main` are built and deployed to **GitHub Pages** by the workflow in
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). To enable it,
+set **Settings → Pages → Source** to **GitHub Actions** once. The production
+build uses a `/foontik/` base path (see `vite.config.ts`); change it if you host
+under a different path.
+
+## License
+
+[MIT](LICENSE) © Edvard Hovhannisyan
